@@ -1,5 +1,7 @@
 console.log("hello");
 
+// TOPIC 2
+
 function checkAge(age) {
   let message;
 
@@ -227,15 +229,15 @@ function getNameLength(name) {
 }
 console.log(getNameLength("Julia"));
 
-const courseTopic = "JavaScript essentials";
+// const courseTopic = "JavaScript essentials";
 
-const courseTopicLength = courseTopic.length;
-const firstElement = courseTopic[0];
-const lastElement = courseTopic[courseTopic.length - 1];
+// const courseTopicLength = courseTopic.length;
+// const firstElement = courseTopic[0];
+// const lastElement = courseTopic[courseTopic.length - 1];
 
-console.log(courseTopicLength);
-console.log(firstElement);
-console.log(lastElement);
+// console.log(courseTopicLength);
+// console.log(firstElement);
+// console.log(lastElement);
 
 function getSubstring(string, length) {
   const substring = string.slice(0, length);
@@ -282,5 +284,121 @@ function checkForSpam(message) {
 console.log(checkForSpam("SPAM"));
 console.log(checkForSpam("Hello"));
 console.log(checkForSpam("SaLe"));
+
+// TOPIC 3 ===========================    ARRAYS
+
+console.log("topic 3");
+
+function checkAge(age) {
+  if (age >= 18) {
+    return "You are an adult";
+  }
+  return "You are a minor";
+}
+console.log(checkAge(21));
+
+function checkPassword(password) {
+  const ADMIN_PASSWORD = "jqueryismyjam";
+
+  if (password === ADMIN_PASSWORD) {
+    return "Welcome!";
+  }
+  return "Access denied, wrong password!";
+}
+console.log(checkPassword("qwerty"));
+
+function checkStorage(available, ordered) {
+  if (ordered === 0) {
+    return "Your order is empty!";
+  }
+  if (ordered > available) {
+    return "Your order is too large, not enough goods in stock!";
+  }
+  return "The order is accepted, our manager will contact you";
+}
+console.log(checkStorage(30, 15));
+
+// const fruits = ["apple", "plum", "pear", "orange"];
+
+// const firstElement = fruits[0];
+// const secondElement = fruits[1];
+// const lastElement = fruits[fruits.length - 1];
+
+// const fruits = ["apple", "plum", "pear", "orange"];
+
+// fruits[1] = "peach";
+// fruits[3] = "banana";
+// console.log(fruits);
+
+// const fruits = ["apple", "peach", "pear", "banana"];
+// const fruitsArrayLength = fruits.length;
+// console.log(fruitsArrayLength);
+
+const fruits = ["apple", "peach", "pear", "banana"];
+
+const lastElementIndex = fruits.length - 1;
+const lastElement = fruits[lastElementIndex];
+console.log(lastElementIndex);
+console.log(lastElement);
+
+function getExtremeElements(array) {
+  const firstElement = array[0];
+  const lastElement = array[array.length - 1];
+
+  return [firstElement, lastElement];
+}
+console.log(getExtremeElements(["apple", "peach", "pear", "banana"]));
+
+function splitMessage(message, delimiter) {
+  let words;
+  words = message.split(delimiter);
+  return words;
+}
+console.log(splitMessage("Mango hurries to the train", " "));
+
+function calculateEngravingPrice(message, pricePerWord) {
+  let totalCost = message.split(" ").length * pricePerWord;
+  return totalCost;
+}
+console.log(calculateEngravingPrice("JavaScript is in my blood", 10));
+
+function makeStringFromArray(array, delimiter) {
+  let string;
+  string = array.join(delimiter);
+
+  return string;
+}
+console.log(makeStringFromArray(["best for week"], "_"));
+
+function slugify(title) {
+  let slug;
+  slug = title.toLowerCase().split(" ").join("-");
+  return slug;
+}
+console.log(slugify("How to become a JUNIOR developer for TWO WEEKS"));
+
+// const fruits = ["apple", "plum", "pear", "orange", "banana"];
+
+// const firstTwoEls = fruits.slice(0, 2);
+// const nonExtremeEls = fruits.slice(1, fruits.length - 1);
+// const lastThreeEls = fruits.slice(-3);
+
+// console.log(lastThreeEls);
+
+const oldClients = ["Mango", "Ajax", "Poly", "Kiwi"];
+const newClients = ["Peach", "Houston"];
+
+const allClients = oldClients.concat(newClients);
+console.log(allClients);
+
+function makeArray(firstArray, secondArray, maxLength) {
+  const newArray = firstArray.concat(secondArray);
+  if (newArray.length > maxLength) {
+    return newArray.slice(0, maxLength);
+  }
+  return newArray;
+}
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2));
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4));
 
 console.log("end");
