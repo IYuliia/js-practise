@@ -401,4 +401,95 @@ function makeArray(firstArray, secondArray, maxLength) {
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2));
 console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4));
 
+// TOPIC 4 ===========================   FUNCTIONS
+
+const start = 3;
+const end = 7;
+
+for (let i = start; i <= end; i += 1) {
+  console.log(i);
+}
+
+function calculateTotal(number) {
+  let sum = 0;
+  for (let i = 1; i <= number; i += 1) {
+    sum += i;
+  }
+  return sum;
+}
+console.log(calculateTotal(7));
+
+// const fruits = ["apple", "plum", "pear", "orange"];
+
+// for (let i = 0; i < fruits.length; i += 1) {
+//   const fruit = fruits[i];
+//   console.log(fruit);
+// }
+
+function calculateTotalPrice(order) {
+  let total = 0;
+  for (let i = 1; i < order.length; i += 1) {
+    total += order[i];
+  }
+  return total;
+}
+console.log(calculateTotalPrice([12, 85, 37, 4]));
+console.log(calculateTotalPrice([164, 48, 291]));
+
+function findLongestWord(string) {
+  const arr = string.split(" ");
+  console.log(arr);
+  let longestWord = arr[0];
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i].length > longestWord.length) {
+      longestWord = arr[i];
+    }
+  }
+  return longestWord;
+}
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
+console.log(findLongestWord("May the force be with you"));
+
+function createArrayOfNumbers(min, max) {
+  const numbers = [];
+
+  for (i = min; i <= max; i += 1) {
+    numbers.push(i);
+  }
+  return numbers;
+}
+
+console.log(createArrayOfNumbers(14, 17));
+console.log(createArrayOfNumbers(29, 34));
+
+function filterArray(numbers, value) {
+  let newArray = [];
+  for (i = 0; i < numbers.length; i += 1) {
+    if (numbers[i] > value) {
+      newArray.push(numbers[i]);
+    }
+  }
+  return newArray;
+}
+console.log(filterArray([1, 2, 3, 4, 5], 4));
+
+function checkFruit(fruit) {
+  const fruits = ["apple", "plum", "pear", "orange"];
+
+  return fruits.includes(fruit);
+}
+console.log(checkFruit("mandarin"));
+console.log(checkFruit("plum"));
+
+function getCommonElements(array1, array2) {
+  let newArray = [];
+  for (let i = 0; i < array1.length; i += 1) {
+    if (array2.includes(array1[i])) {
+      newArray.push(array1[i]);
+    }
+  }
+  return newArray;
+}
+console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
+
 console.log("end");
