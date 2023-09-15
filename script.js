@@ -492,4 +492,91 @@ function getCommonElements(array1, array2) {
 }
 console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
 
+function calculateTotalPrice(order) {
+  let total = 0;
+  for (const item of order) {
+    total += item;
+  }
+  return total;
+}
+console.log(calculateTotalPrice([412, 371, 94, 63, 176]));
+
+function filterArray(numbers, value) {
+  let filteredNumbers = [];
+  for (const number of numbers) {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  }
+  return filteredNumbers;
+}
+console.log(filterArray([1, 2, 3, 4, 5], 4));
+
+// modulo (%) returns the integer remainder of the division of the two numbers, the dividend and the divisor.
+
+// the variable a must be the number 0
+// the variable b must be the number 1
+// the variable c must be the number 3
+// the variable d must be the number 5
+// the variable e must be the number 2
+
+// const a = 3 % 1;
+// const b = 4 % 3;
+// const c = 11 % 8;
+// const d = 12 % 7;
+// const e = 8 % 3;
+
+function getEvenNumbers(start, end) {
+  const evenArray = [];
+  for (let i = start; i <= end; i += 1) {
+    if (i % 2 === 0) {
+      evenArray.push(i);
+    }
+  }
+  return evenArray;
+}
+console.log(getEvenNumbers(3, 11));
+console.log(getEvenNumbers(6, 12));
+
+const st = 6;
+const en = 27;
+let number;
+
+for (let i = st; i < en; i += 1) {
+  if (i % 5 === 0) {
+    number = i;
+    console.log(number);
+    break;
+  }
+}
+
+// Refactor the findNumber(start, end, divisor) function so that it:
+
+// returns the first number from in the range start to end, which is divisible by divisor without a remainder
+// does not use the break operator
+// does not use the variable number
+
+function findNumber(start, end, divisor) {
+  for (let i = start; i < end; i += 1) {
+    if (i % divisor === 0) {
+      return i;
+    }
+  }
+}
+console.log(findNumber(8, 17, 3));
+console.log(findNumber(16, 35, 7));
+
+function includes(array, value) {
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === value) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(includes([1, 2, 3, 4, 5], 17));
+console.log(
+  includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter")
+);
+
 console.log("end");
