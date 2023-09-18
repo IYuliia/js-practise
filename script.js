@@ -579,4 +579,136 @@ console.log(
   includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter")
 );
 
+// TOPIC 5 =========================== OBJECTS
+
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+  tags: ["premium", "promoted", "top"],
+  owner: {
+    name: "Henry",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+  tags: ["premium", "promoted", "top"],
+};
+
+console.log(apartment.rating);
+console.log(apartment.descr);
+console.log(apartment.owner.phone);
+
+const aptRating = apartment.rating;
+const aptDescr = apartment.descr;
+const aptPrice = apartment.price;
+const aptTags = apartment.tags;
+
+// const aptRating = apartment["rating"];
+// const aptDescr = apartment["descr"];
+// const aptPrice = apartment["price"];
+// const aptTags = apartment["tags"];
+
+console.log(aptTags);
+
+const ownerName = apartment.owner.name;
+const ownerPhone = apartment.owner.phone;
+const ownerEmail = apartment.owner.email;
+const numberOfTags = apartment.tags.length;
+const firstTag = apartment.tags[0];
+const lastTag = apartment.tags[apartment.tags.length - 1];
+
+console.log(lastTag);
+console.log(numberOfTags);
+
+apartment.price = 5000;
+apartment.rating = 4.7;
+apartment.owner.name = "Henry Sibola";
+apartment.tags.push("trusted");
+
+console.log(apartment.owner.name);
+
+apartment.area = 60;
+apartment.rooms = 3;
+apartment.location = {
+  country: "Jamaica",
+  city: "Kingston",
+};
+
+console.log(apartment.location.city);
+
+const name = "Repair Droid";
+const price = 2500;
+const image = "https://via.placeholder.com/640x480";
+const tags = ["on sale", "trending", "best buy"];
+
+const product = {
+  name,
+  price,
+  image,
+  tags,
+};
+
+console.log(product.price);
+console.log(product.tags);
+
+const emailInputName = "email";
+const passwordInputName = "password";
+
+const credentials = {
+  [emailInputName]: "henry.carter@aptmail.com",
+  [passwordInputName]: "jqueryismyjam",
+};
+
+console.log(credentials.email);
+console.log(credentials.password);
+
+const apt = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const keys = [];
+const values = [];
+
+for (key in apt) {
+  if (apt.hasOwnProperty(key)) {
+    keys.push(key);
+    values.push(apt[key]);
+  }
+}
+
+console.log(key);
+console.log(apt[key]);
+console.log(keys);
+console.log(values);
+
+function countProps(object) {
+  let propCount = 0;
+
+  for (key in object) {
+    if (object.hasOwnProperty(key)) {
+      propCount += 1;
+    }
+  }
+
+  return propCount;
+}
+console.log(countProps({ name: "Mango", age: 2 }));
+console.log(countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }));
+
+const apartment1 = {
+  descr: "Spacious apartment in the city center",
+  rating: 4,
+  price: 2153,
+};
+const values1 = [];
+const keys1 = Object.keys(apartment1);
+for (const key of keys1) {
+  values1.push(apartment1[key]);
+}
+
+console.log(keys1);
+console.log(values1);
+
 console.log("end");
