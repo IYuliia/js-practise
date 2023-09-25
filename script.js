@@ -1141,4 +1141,94 @@ console.log(
   atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion")
 );
 
+// TOPIC 8 ============================= CALLBACKS AND ARROW FUNCTIONS
+
+// function makePizza() {
+//   return "Your pizza is being prepared, please wait.";
+// }
+// const result = makePizza();
+// const pointer = makePizza;
+// console.log(result);
+// console.log(pointer);
+
+// function deliverPizza(pizzaName) {
+//   return `Delivering ${pizzaName} pizza.`;
+// }
+
+// function makePizza(pizzaName) {
+//   return `Pizza ${pizzaName} is being prepared, please wait...`;
+// }
+
+// function makeMessage(pizzaName, callback) {
+//   return callback(pizzaName);
+// }
+// console.log(makeMessage("Royal Grand", makePizza));
+// console.log(makeMessage("Ultracheese", deliverPizza));
+
+function makePizza(pizzaName, callback) {
+  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+  callback(pizzaName);
+}
+
+makePizza("Royal Grand", function deliverPizza(pizzaName) {
+  console.log(`Delivering pizza ${pizzaName}.`);
+});
+
+makePizza("Ultracheese", function eatPizza(pizzaName) {
+  console.log(`Eating pizza ${pizzaName}`);
+});
+
+const pizzaPalace = {
+  pizzas: ["Ultracheese", "Smoked", "Four meats"],
+  order(pizzaName, onSuccess, onError) {
+    for (const pizza of this.pizzas) {
+      if (pizza === pizzaName) {
+        return onSuccess(pizzaName);
+      }
+    }
+    return onError(
+      `There is no pizza with a name ${pizzaName} in the assortment.`
+    );
+  },
+};
+
+function makePizza(pizzaName) {
+  return `Your order is accepted. Cooking pizza ${pizzaName}.`;
+}
+
+function onOrderError(error) {
+  return `Error! ${error}`;
+}
+
+console.log(pizzaPalace.order("Smoked", makePizza, onOrderError));
+console.log(pizzaPalace.order("Four meats", makePizza, onOrderError));
+console.log(pizzaPalace.order("Big Mike", makePizza, onOrderError));
+console.log(pizzaPalace.order("Vienna", makePizza, onOrderError));
+
+function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+
+  orderedItems.forEach(function (item, index) {
+    totalPrice += orderedItems[index];
+  });
+
+  return totalPrice;
+}
+
+console.log(calculateTotalPrice([412, 371, 94, 63, 176]));
+console.log(calculateTotalPrice([12, 85, 37, 4]));
+
+function filterArray(numbers, value) {
+  const filteredNumbers = [];
+
+  numbers.forEach(function (number) {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  });
+
+  return filteredNumbers;
+}
+console.log(filterArray([12, 24, 8, 41, 76], 38));
+
 console.log("end");
