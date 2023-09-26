@@ -1218,6 +1218,13 @@ function calculateTotalPrice(orderedItems) {
 console.log(calculateTotalPrice([412, 371, 94, 63, 176]));
 console.log(calculateTotalPrice([12, 85, 37, 4]));
 
+/**
+ * Filter array function
+ * @param {number} numbers
+ * @param {number} value
+ * @returns {number} filtered array of numbers higher than value
+ */
+
 function filterArray(numbers, value) {
   const filteredNumbers = [];
 
@@ -1230,5 +1237,66 @@ function filterArray(numbers, value) {
   return filteredNumbers;
 }
 console.log(filterArray([12, 24, 8, 41, 76], 38));
+
+/**
+ * compares two arrays
+ * @param {array} firstArray
+ * @param {array} secondArray
+ * @returns the elements the arrays have in common
+ */
+function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
+
+  firstArray.forEach(function (item) {
+    if (secondArray.includes(item)) {
+      commonElements.push(item);
+    }
+  });
+
+  return commonElements;
+}
+console.log(getCommonElements([1, 2, 3], [2, 4]));
+
+const calculateTtlPrice = (quantity, pricePerItem) => {
+  return quantity * pricePerItem;
+};
+
+// const calculateTtlPrice = (quantity, pricePerItem) => quantity * pricePerItem;
+console.log(calculateTtlPrice(5, 100));
+
+const calculateTotalPr = (orderedItems) => {
+  let totalPrice = 0;
+  orderedItems.forEach((item) => (totalPrice += item));
+
+  return totalPrice;
+};
+
+console.log(calculateTotalPr([12, 85, 37, 4]));
+
+// ====== REFACTORED AS ARROW FUNCTION ================
+
+// const filterArray = (numbers, value) => {
+//   const filteredNumbers = [];
+
+//   numbers.forEach((number) => {
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
+//   });
+
+//   return filteredNumbers;
+// }
+
+// const getCommonElements = (firstArray, secondArray) => {
+//   const commonElements = [];
+
+//   firstArray.forEach((element) => {
+//     if (secondArray.includes(element)) {
+//       commonElements.push(element);
+//     }
+//   });
+
+//   return commonElements;
+// }
 
 console.log("end");
