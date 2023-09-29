@@ -1441,4 +1441,195 @@ const uniqueGenres = allGenres.filter(
 console.log(allGenres);
 console.log(uniqueGenres);
 
+const booksC = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+
+const MIN_RATING = 8;
+const AUTHOR = "Bernard Cornwell";
+
+const topRatedBooks = booksC.filter(({ rating }) => rating >= MIN_RATING);
+const booksByAuthor = booksC.filter(({ author }) => author === AUTHOR);
+
+console.log(booksByAuthor);
+console.log(topRatedBooks);
+
+const getUsersWithEyeColor = (users, color) => {
+  return users.filter(({ eyeColor }) => eyeColor === color);
+};
+console.log(
+  getUsersWithEyeColor(
+    [
+      {
+        name: "Moore Hensley",
+        email: "moorehensley@indexia.com",
+        eyeColor: "blue",
+        friends: ["Sharron Pace"],
+        isActive: false,
+        balance: 2811,
+        gender: "male",
+      },
+      {
+        name: "Sharlene Bush",
+        email: "sharlenebush@tubesys.com",
+        eyeColor: "blue",
+        friends: ["Briana Decker", "Sharron Pace"],
+        isActive: true,
+        balance: 3821,
+        gender: "female",
+      },
+      {
+        name: "Ross Vazquez",
+        email: "rossvazquez@xinware.com",
+        eyeColor: "green",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        isActive: false,
+        balance: 3793,
+        gender: "male",
+      },
+    ],
+    "green"
+  )
+);
+
+const getUsersWithAge = (users, minAge, maxAge) => {
+  return users.filter(({ age }) => age >= minAge && age <= maxAge);
+};
+console.log(
+  getUsersWithAge(
+    [
+      {
+        name: "Moore Hensley",
+        email: "moorehensley@indexia.com",
+        eyeColor: "blue",
+        friends: ["Sharron Pace"],
+        isActive: false,
+        balance: 2811,
+        gender: "male",
+        age: 37,
+      },
+      {
+        name: "Sharlene Bush",
+        email: "sharlenebush@tubesys.com",
+        eyeColor: "blue",
+        friends: ["Briana Decker", "Sharron Pace"],
+        isActive: true,
+        balance: 3821,
+        gender: "female",
+        age: 34,
+      },
+      {
+        name: "Ross Vazquez",
+        email: "rossvazquez@xinware.com",
+        eyeColor: "green",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        isActive: false,
+        balance: 3793,
+        gender: "male",
+        age: 24,
+      },
+      {
+        name: "Elma Head",
+        email: "elmahead@omatom.com",
+        eyeColor: "green",
+        friends: ["Goldie Gentry", "Aisha Tran"],
+        isActive: true,
+        balance: 2278,
+        gender: "female",
+        age: 21,
+      },
+    ],
+    30,
+    40
+  )
+);
+
+const getUsersWithFriend = (users, friendName) => {
+  return users.filter(({ friends }) => friends.includes(friendName));
+};
+console.log(
+  getUsersWithFriend(
+    [
+      {
+        name: "Sharlene Bush",
+        email: "sharlenebush@tubesys.com",
+        eyeColor: "blue",
+        friends: ["Briana Decker", "Sharron Pace"],
+        isActive: true,
+        balance: 3821,
+        gender: "female",
+        age: 34,
+      },
+      {
+        name: "Ross Vazquez",
+        email: "rossvazquez@xinware.com",
+        eyeColor: "green",
+        friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+        isActive: false,
+        balance: 3793,
+        gender: "male",
+        age: 24,
+      },
+    ],
+    "Marilyn Mcintosh"
+  )
+);
+
+const getFriends = (users) => {
+  return users
+    .flatMap(({ friends }) => friends)
+    .filter((friend, index, array) => array.indexOf(friend) === index);
+};
+
+console.log(
+  getFriends([
+    {
+      name: "Moore Hensley",
+      email: "moorehensley@indexia.com",
+      eyeColor: "blue",
+      friends: ["Sharron Pace"],
+      isActive: false,
+      balance: 2811,
+      gender: "male",
+      age: 37,
+    },
+    {
+      name: "Sharlene Bush",
+      email: "sharlenebush@tubesys.com",
+      eyeColor: "blue",
+      friends: ["Briana Decker", "Sharron Pace"],
+      isActive: true,
+      balance: 3821,
+      gender: "female",
+      age: 34,
+    },
+    {
+      name: "Ross Vazquez",
+      email: "rossvazquez@xinware.com",
+      eyeColor: "green",
+      friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+      isActive: false,
+      balance: 3793,
+      gender: "male",
+      age: 24,
+    },
+  ])
+);
+
 console.log("end");
