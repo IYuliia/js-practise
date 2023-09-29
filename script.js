@@ -1299,4 +1299,146 @@ console.log(calculateTotalPr([12, 85, 37, 4]));
 //   return commonElements;
 // }
 
+// TOPIC 9 ================= ITERATING METHODS =============
+
+function changeEven(numbers, value) {
+  const newArr = [];
+  for (let i = 0; i < numbers.length; i += 1) {
+    if (numbers[i] % 2 === 0) {
+      newArr.push(numbers[i] + value);
+    } else {
+      newArr.push(numbers[i]);
+    }
+  }
+  return newArr;
+}
+console.log(changeEven([2, 8, 3, 7, 4, 6], 10));
+
+const planets = ["Earth", "Mars", "Venus", "Jupiter"];
+const planetsLengths = planets.map((planet) => planet.length);
+console.log(planetsLengths);
+
+const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+
+const titles = books.map(({ title }) => title);
+console.log(titles);
+
+const booksA = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism"],
+  },
+];
+
+const genres = booksA.flatMap(({ genres }) => genres);
+console.log(genres);
+
+const getUserNames = (users) => {
+  return users.map(({ name }) => name);
+};
+
+console.log(
+  getUserNames([
+    {
+      name: "Moore Hensley",
+      email: "moorehensley@indexia.com",
+      eyeColor: "blue",
+      friends: ["Sharron Pace"],
+      isActive: false,
+      balance: 2811,
+      skills: ["ipsum", "lorem"],
+      gender: "male",
+      age: 37,
+    },
+    {
+      name: "Sharlene Bush",
+      email: "sharlenebush@tubesys.com",
+      eyeColor: "blue",
+      friends: ["Briana Decker", "Sharron Pace"],
+      isActive: true,
+      balance: 3821,
+      skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+      gender: "female",
+      age: 34,
+    },
+  ])
+);
+
+const getUserEmails = (users) => {
+  return users.map(({ email }) => email);
+};
+console.log(
+  getUserEmails([
+    {
+      name: "Moore Hensley",
+      email: "moorehensley@indexia.com",
+    },
+    {
+      name: "Sharlene Bush",
+      email: "sharlenebush@tubesys.com",
+    },
+  ])
+);
+
+const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+
+const evenNumbers = numbers.filter((number) => number % 2 === 0);
+const oddNumbers = numbers.filter((number) => number % 2 === 1);
+console.log(evenNumbers);
+console.log(oddNumbers);
+
+const booksB = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction", "mysticism"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism", "adventure"],
+  },
+];
+
+const allGenres = booksB.flatMap(({ genres }) => genres);
+const uniqueGenres = allGenres.filter(
+  (genre, index, array) => array.indexOf(genre) === index
+);
+console.log(allGenres);
+console.log(uniqueGenres);
+
 console.log("end");
