@@ -1632,4 +1632,156 @@ console.log(
   ])
 );
 
+const getActiveUsers = (users) => {
+  return users.filter((user) => user.isActive);
+};
+
+const getInactiveUsers = (users) => {
+  return users.filter((user) => !user.isActive);
+};
+
+const booksD = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+];
+const BOOK_TITLE = "The Dream of a Ridiculous Man";
+const AUTHOR1 = "Robert Sheckley";
+
+const bookWithTitle = booksD.find(({ title }) => title === BOOK_TITLE);
+const bookByAuthor = booksD.find(({ author }) => author === AUTHOR1);
+
+console.log(bookWithTitle);
+console.log(bookByAuthor);
+
+/**
+ *function that returns a user object whose email address (the email property) matches the value of the email parameter.
+ * @param {string} users
+ * @param {string} email
+ * @returns a user object
+ */
+
+const getUserWithEmail = (users, email) => {
+  return users.find(({ email: userEmail }) => userEmail === email);
+};
+
+const firstArray = [26, 94, 36, 18];
+const secondArray = [17, 61, 23];
+const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+
+const eachElementInFirstIsEven = firstArray.every((number) => number % 2 === 0);
+const eachElementInFirstIsOdd = firstArray.every((number) => number % 2);
+
+const eachElementInSecondIsEven = secondArray.every(
+  (number) => number % 2 === 0
+);
+const eachElementInSecondIsOdd = secondArray.every((number) => number % 2 != 0);
+
+const eachElementInThirdIsEven = thirdArray.every((number) => number % 2 === 0);
+const eachElementInThirdIsOdd = thirdArray.every((number) => number % 2);
+
+/**
+ *function that checks if all users are currently active (the isActive property)
+ * @param {string} users
+ * @returns true or false
+ */
+const isEveryUserActive = (users) => {
+  return users.every((user) => user.isActive);
+};
+
+const firstArr = [26, 94, 36, 18];
+const secondArr = [17, 61, 23];
+const thirdArr = [17, 26, 94, 61, 36, 23, 18];
+
+const anyElementInFirstIsEven = firstArr.some((number) => number % 2 === 0);
+const anyElementInFirstIsOdd = firstArr.some((number) => number % 2);
+
+const anyElementInSecondIsEven = secondArr.some((number) => number % 2 === 0);
+const anyElementInSecondIsOdd = secondArr.some((number) => number % 2 != 0);
+
+const anyElementInThirdIsEven = thirdArr.some((number) => number % 2 === 0);
+const anyElementInThirdIsOdd = thirdArr.some((number) => number % 2 != 0);
+
+const isAnyUserActive = (users) => {
+  return users.some((user) => user.isActive);
+};
+
+const players = {
+  mango: 1270,
+  poly: 468,
+  ajax: 710,
+  kiwi: 244,
+};
+const playtimes = Object.values(players); // [1270, 468, 710, 244]
+
+const totalPlayTime = playtimes.reduce((previousValue, number) => {
+  return previousValue + number;
+}, 0);
+
+const averagePlayTime = totalPlayTime / playtimes.length;
+console.log(averagePlayTime);
+
+/**
+ *Our service needs to calculate the average time spent on one game for each player, and get the total amount of these times. You can calculate the time for each of the players by dividing its time (the playtime property) by the number of games (the gamesPlayed property).
+ */
+
+const playersB = [
+  { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+  { name: "Poly", playtime: 469, gamesPlayed: 2 },
+  { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+  { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
+];
+
+const totalAveragePlaytimePerGame = playersB.reduce(
+  (total, player) => total + player.playtime / player.gamesPlayed,
+  0
+);
+console.log(totalAveragePlaytimePerGame);
+
+/**
+ *calculates and returns the sum of all funds (the balance property) stored by users from the users array
+ * @param {string} users
+ * @returns
+ */
+const calculateTotalBalance = (users) => {
+  return users.reduce((total, user) => total + user.balance, 0);
+};
+
+/**
+ * it counts and returns the total number of friends (the friends property) of all users from the users array
+ * @param {string} users
+ * @returns {number}
+ */
+const getTotalFriendCount = (users) => {
+  return users.reduce((total, user) => total + user.friends.length, 0);
+};
+
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+  "Tanith Lee",
+  "Bernard Cornwell",
+  "Robert Sheckley",
+  "Fyodor Dostoevsky",
+];
+
+const ascendingReleaseDates = [...releaseDates].sort();
+
+const alphabeticalAuthors = [...authors].sort();
+
+console.log(ascendingReleaseDates);
+console.log(alphabeticalAuthors);
+
 console.log("end");
