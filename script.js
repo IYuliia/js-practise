@@ -1784,4 +1784,176 @@ const alphabeticalAuthors = [...authors].sort();
 console.log(ascendingReleaseDates);
 console.log(alphabeticalAuthors);
 
+const releaseDatesA = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+
+const ascendingReleaseDatesA = [...releaseDatesA].sort((a, b) => a - b);
+
+const descendingReleaseDatesA = [...releaseDatesA].sort((a, b) => b - a);
+
+console.log(ascendingReleaseDatesA);
+console.log(descendingReleaseDatesA);
+
+const authorsA = [
+  "Tanith Lee",
+  "Bernard Cornwell",
+  "Robert Sheckley",
+  "Fyodor Dostoevsky",
+  "Howard Lovecraft",
+];
+
+const authorsInAlphabetOrder = [...authorsA].sort((a, b) => a.localeCompare(b));
+
+const authorsInReversedOrder = [...authorsA].sort((a, b) => b.localeCompare(a));
+console.log(authorsInAlphabetOrder);
+console.log(authorsInReversedOrder);
+
+const booksE = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+// Change code below this line
+
+const sortedByAuthorName = [...booksE].sort((firstBook, secondBook) =>
+  firstBook.author.localeCompare(secondBook.author)
+);
+
+const sortedByReversedAuthorName = [...booksE].sort((firstBook, secondBook) =>
+  secondBook.author.localeCompare(firstBook.author)
+);
+
+const sortedByAscendingRating = [...booksE].sort(
+  (firstBook, secondBook) => firstBook.rating - secondBook.rating
+);
+
+const sortedByDescentingRating = [...booksE].sort(
+  (firstBook, secondBook) => secondBook.rating - firstBook.rating
+);
+console.log(sortedByAuthorName);
+console.log(sortedByReversedAuthorName);
+console.log(sortedByAscendingRating);
+console.log(sortedByDescentingRating);
+
+const users = [
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    gender: "male",
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    gender: "female",
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    eyeColor: "green",
+    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+    isActive: false,
+    balance: 3793,
+    gender: "male",
+  },
+];
+
+const sortByAscendingBalance = (users) => {
+  return [...users].sort(
+    (firstUser, secondUser) => firstUser.balance - secondUser.balance
+  );
+};
+console.log(sortByAscendingBalance(users));
+
+const sortByDescendingFriendCount = (users) => {
+  return [...users].sort(
+    (firstUser, secondUser) =>
+      secondUser.friends.length - firstUser.friends.length
+  );
+};
+console.log(sortByDescendingFriendCount(users));
+
+const sortByName = (users) => {
+  return [...users].sort((firstUser, secondUser) =>
+    firstUser.name.localeCompare(secondUser.name)
+  );
+};
+console.log(sortByName(users));
+
+const booksF = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  {
+    title: "The Dreams in the Witch House",
+    author: "Howard Lovecraft",
+    rating: 8.67,
+  },
+];
+const MIN_BOOK_RATING = 8;
+
+const names = booksF
+  .filter(({ rating }) => rating > MIN_BOOK_RATING)
+  .map(({ author }) => author)
+  .sort((firstAuthor, secondAuthor) => firstAuthor.localeCompare(secondAuthor));
+console.log(names);
+
+// returns an array of usernames sorted in ascending order by the number of their friends (the friends property)
+const getNamesSortedByFriendCount = (users) => {
+  return [...users]
+    .sort(
+      (firstUser, secondUser) =>
+        firstUser.friends.length - secondUser.friends.length
+    )
+    .map(({ name }) => name);
+};
+
+// returns an array of unique friends' names (the friends property) sorted alphabetically
+const getSortedFriends = (users) => {
+  return users
+    .flatMap(({ friends }) => friends)
+    .filter((item, index, array) => array.indexOf(item) === index)
+    .sort((a, b) => a.localeCompare(b));
+};
+
+// returns the total balance of users (the balance property) whose gender (the gender property) matches the value of the gender parameter
+const getTotalBalanceByGender = (users, gender) => {
+  return users
+    .filter(({ gender: userGender }) => userGender === gender)
+    .reduce((total, user) => total + user.balance, 0);
+};
+
 console.log("end");
