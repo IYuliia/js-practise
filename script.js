@@ -1956,4 +1956,114 @@ const getTotalBalanceByGender = (users, gender) => {
     .reduce((total, user) => total + user.balance, 0);
 };
 
+// =================== TOPIC 10 THIS ================
+
+const pizzaPalace1 = {
+  pizzas: ["Supercheese", "Smoked", "Four meats"],
+
+  checkPizza(pizzaName) {
+    return this.pizzas.includes(pizzaName);
+  },
+  order(pizzaName) {
+    const isPizzaAvailable = this.checkPizza(pizzaName);
+
+    if (!isPizzaAvailable) {
+      return `Sorry, there is no pizza named «${pizzaName}»`;
+    }
+
+    return `Order accepted, preparing «${pizzaName}» pizza`;
+  },
+};
+
+console.log(pizzaPalace1.order("Four meats"));
+console.log(pizzaPalace1.order("Viennese"));
+
+const customer = {
+  username: "Mango",
+  balance: 24000,
+  discount: 0.1,
+  orders: ["Burger", "Pizza", "Salad"],
+
+  getBalance() {
+    return this.balance;
+  },
+  getDiscount() {
+    return this.discount;
+  },
+  setDiscount(value) {
+    this.discount = value;
+  },
+  getOrders() {
+    return this.orders;
+  },
+  addOrder(cost, order) {
+    this.balance -= cost - cost * this.discount;
+    this.orders.push(order);
+  },
+};
+
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+
+const historyService = {
+  orders: [
+    { email: "jacob@hotmail.com", dish: "Burrito" },
+    { email: "solomon@topmail.net", dish: "Burger" },
+    { email: "artemis@coldmail.net", dish: "Pizza" },
+    { email: "solomon@topmail.net", dish: "Apple pie" },
+    { email: "jacob@hotmail.com", dish: "Taco" },
+  ],
+
+  getOrdersLog() {
+    return this.orders
+      .map((order) => `email: ${order.email} dish: ${order.dish}`)
+      .join(" - ");
+  },
+  getEmails() {
+    const emails = this.orders.map((order) => order.email);
+    const uniqueEmails = new Set(emails);
+    return [...uniqueEmails];
+  },
+  getOrdersByEmail(email) {
+    return this.orders.filter((order) => order.email === email);
+  },
+};
+
+console.log(historyService.getOrdersByEmail("solomon@topmail.net"));
+
+const parent = {
+  name: "Stacey",
+  surname: "Moore",
+  age: 54,
+  heritage: "Irish",
+};
+
+const child = Object.create(parent);
+child.name = "Jason";
+child.age = 27;
+
+console.log(child.surname);
+
+const ancestor = {
+  name: "Paul",
+  age: 83,
+  surname: "Dawson",
+  heritage: "Irish",
+};
+
+const parent1 = Object.create(ancestor);
+parent1.name = "Stacey";
+parent1.surname = "Moore";
+parent1.age = 54;
+
+const child1 = Object.create(parent1);
+child1.name = "Jason";
+child1.age = 27;
+
+console.log(parent1.heritage);
+console.log(child1.name);
+
 console.log("end");
