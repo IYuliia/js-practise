@@ -2066,4 +2066,79 @@ child1.age = 27;
 console.log(parent1.heritage);
 console.log(child1.name);
 
+// TOPIC 11 ===================== OBJECT ORIENTED ===========================
+
+class Car {
+  constructor({ brand, model, price }) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+
+  getPrice() {
+    return this.price;
+  }
+
+  changePrice(newPrice) {
+    this.price = newPrice;
+  }
+}
+const instance = new Car({ brand: "Audi", model: "Q3", price: 36000 });
+instance.changePrice(35000);
+console.log(instance.getPrice());
+
+class Storage {
+  constructor(items) {
+    this.items = items;
+  }
+  getItems() {
+    return this.items;
+  }
+  addItem(newItem) {
+    this.items.push(newItem);
+  }
+  removeItem(itemToRemove) {
+    const indexToRemove = this.items.indexOf(itemToRemove);
+    if (indexToRemove !== -1) {
+      this.items.splice(indexToRemove, 1);
+    }
+  }
+}
+
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems());
+storage.addItem("Droid");
+console.log(storage.getItems());
+storage.removeItem("Prolonger");
+console.log(storage.getItems());
+
+class StringBuilder {
+  constructor(initialValue) {
+    this.value = initialValue;
+  }
+  getValue() {
+    return this.value;
+  }
+  padEnd(str) {
+    this.value = this.value.concat(str);
+  }
+
+  padStart(str) {
+    this.value = str.concat(this.value);
+  }
+
+  padBoth(str) {
+    this.value = str.concat(this.value, str);
+  }
+}
+
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
+
 console.log("end");
