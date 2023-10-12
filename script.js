@@ -2139,6 +2139,124 @@ console.log(builder.getValue()); // "^."
 builder.padEnd("^");
 console.log(builder.getValue()); // "^.^"
 builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+console.log(builder.getValue()); // "=^.^=
+
+class Cars {
+  #brand;
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+
+  getBrand() {
+    return this.#brand;
+  }
+  changeBrand(newBrand) {
+    this.#brand = newBrand;
+    return this.#brand;
+  }
+}
+const instance1 = new Cars({ brand: "Audi", model: "Q3", price: 36000 });
+console.log(instance1);
+console.log(instance1.getBrand());
+console.log(instance1.changeBrand("Volvo"));
+console.log(instance1.getBrand());
+
+class Storage1 {
+  #items;
+  constructor(items) {
+    this.#items = items;
+  }
+
+  getItems() {
+    return this.#items;
+  }
+
+  addItem(newItem) {
+    this.#items.push(newItem);
+  }
+
+  removeItem(itemToRemove) {
+    this.#items = this.#items.filter((item) => item !== itemToRemove);
+  }
+}
+
+const storage1 = new Storage1(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage1.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage1.addItem("Droid");
+console.log(storage1.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage1.removeItem("Prolonger");
+console.log(storage1.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+class StringBuilder1 {
+  // Change code below this line
+  #value;
+  constructor(initialValue) {
+    this.#value = initialValue;
+  }
+
+  getValue() {
+    return this.#value;
+  }
+
+  padEnd(str) {
+    this.#value += str;
+  }
+
+  padStart(str) {
+    this.#value = str + this.#value;
+  }
+
+  padBoth(str) {
+    this.padStart(str);
+    this.padEnd(str);
+  }
+}
+
+const builder1 = new StringBuilder1(".");
+console.log(builder1.getValue()); // "."
+builder1.padStart("^");
+console.log(builder1.getValue()); // "^."
+builder1.padEnd("^");
+console.log(builder1.getValue()); // "^.^"
+builder1.padBoth("=");
+console.log(builder1.getValue()); // "=^.^="
+
+class Bike {
+  #brand;
+  #model;
+  #price;
+
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
+  }
+
+  get brand() {
+    return this.#brand;
+  }
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
+  }
+
+  get model() {
+    return this.#model;
+  }
+
+  set model(newModel) {
+    this.#model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.#price = newPrice;
+  }
+}
 
 console.log("end");
