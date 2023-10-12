@@ -2066,7 +2066,7 @@ child1.age = 27;
 console.log(parent1.heritage);
 console.log(child1.name);
 
-// TOPIC 11 ===================== OBJECT ORIENTED ===========================
+// TOPIC 11 ===================== CLASSES ===========================
 
 class Car {
   constructor({ brand, model, price }) {
@@ -2086,6 +2086,8 @@ class Car {
 const instance = new Car({ brand: "Audi", model: "Q3", price: 36000 });
 instance.changePrice(35000);
 console.log(instance.getPrice());
+
+// ===================================================
 
 class Storage {
   constructor(items) {
@@ -2111,6 +2113,8 @@ storage.addItem("Droid");
 console.log(storage.getItems());
 storage.removeItem("Prolonger");
 console.log(storage.getItems());
+
+// ===================================================
 
 class StringBuilder {
   constructor(initialValue) {
@@ -2141,6 +2145,8 @@ console.log(builder.getValue()); // "^.^"
 builder.padBoth("=");
 console.log(builder.getValue()); // "=^.^=
 
+// ===================================================
+
 class Cars {
   #brand;
   constructor({ brand, model, price }) {
@@ -2162,6 +2168,8 @@ console.log(instance1);
 console.log(instance1.getBrand());
 console.log(instance1.changeBrand("Volvo"));
 console.log(instance1.getBrand());
+
+// ===================================================
 
 class Storage1 {
   #items;
@@ -2188,6 +2196,8 @@ storage1.addItem("Droid");
 console.log(storage1.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 storage1.removeItem("Prolonger");
 console.log(storage1.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+// ===================================================
 
 class StringBuilder1 {
   // Change code below this line
@@ -2222,6 +2232,8 @@ builder1.padEnd("^");
 console.log(builder1.getValue()); // "^.^"
 builder1.padBoth("=");
 console.log(builder1.getValue()); // "=^.^="
+
+// ===================================================
 
 class Bike {
   #brand;
@@ -2258,5 +2270,169 @@ class Bike {
     this.#price = newPrice;
   }
 }
+
+// =================STATIC PROPERTIES============================
+
+class Car5 {
+  static MAX_PRICE = 50000;
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    if (Car5.MAX_PRICE >= newPrice) this.#price = newPrice;
+  }
+}
+
+const audi = new Car5({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
+
+// =========================================
+
+class Car6 {
+  static #MAX_PRICE = 50000;
+  static checkPrice(price) {
+    if (Car6.#MAX_PRICE < price) {
+      return "Error! Price exceeds the maximum";
+    } else {
+      return "Success! Price is within acceptable limits";
+    }
+  }
+  constructor({ price }) {
+    this.price = price;
+  }
+}
+
+const audi6 = new Car6({ price: 36000 });
+const bmw6 = new Car6({ price: 64000 });
+
+console.log(Car6.checkPrice(audi6.price)); // "Success! Price is within acceptable limits"
+console.log(Car6.checkPrice(bmw6.price)); // "Error! Price exceeds the maximum"
+
+// =============================
+
+class User5 {
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class Admin extends User5 {
+  static AccessLevel = { BASIC: "basic", SUPERUSER: "superuser" };
+}
+
+console.log(Admin.AccessLevel.BASIC);
+console.log(Admin.AccessLevel.SUPERUSER);
+
+// ===================================================
+
+class User7 {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class Admin7 extends User7 {
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+}
+
+const mango7 = new Admin7({
+  email: "mango@mail.com",
+  accessLevel: Admin7.AccessLevel.SUPERUSER,
+});
+
+console.log(mango7.email); // "mango@mail.com"
+console.log(mango7.accessLevel); // "superuser"
+
+// ===================================================
+class User8 {
+  email;
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin8 extends User8 {
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+
+  constructor({ email, accessLevel, blacklistedEmails }) {
+    super(email);
+    this.accessLevel = accessLevel;
+    this.blacklistedEmails = [];
+  }
+
+  blacklist(email) {
+    this.blacklistedEmails.push(email);
+  }
+
+  isBlacklisted(email) {
+    if (this.blacklistedEmails.includes(email)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+const mango8 = new Admin8({
+  email: "mango@mail.com",
+  accessLevel: Admin8.AccessLevel.SUPERUSER,
+});
+
+console.log(mango8.email); // "mango@mail.com"
+console.log(mango8.accessLevel); // "superuser"
+
+mango8.blacklist("poly@mail.com");
+console.log(mango8.blacklistedEmails); // ["poly@mail.com"]
+console.log(mango8.isBlacklisted("mango@mail.com")); // false
+console.log(mango8.isBlacklisted("poly@mail.com")); // true
 
 console.log("end");
